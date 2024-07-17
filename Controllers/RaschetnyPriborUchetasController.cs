@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EnergyApi.Data;
 using EnergyApi.Data.Model;
+using System.ComponentModel.DataAnnotations;
 
 namespace EnergyApi.Controllers
 {
@@ -42,7 +43,7 @@ namespace EnergyApi.Controllers
             return raschetnyPriborUcheta;
         }
 
-        [HttpGet("{year}")]
+        [HttpGet("{year:int}")] // TODO: как добавь валидацию на формат "YYYY"
         public async Task<ActionResult<List<RaschetnyPriborUcheta>>> GetRaschetnyPriborUchetaByYear(int year)
         {
             var raschetnyPriborUcheta = await _context.RaschetnyPriborUchetas.Where(x => x.SDate.Year <= year && x.EDate.Year >= year).ToListAsync();
