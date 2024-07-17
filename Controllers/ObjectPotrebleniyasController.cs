@@ -23,7 +23,7 @@ namespace EnergyApi.Controllers
 
         // GET: api/ObjectPotrebleniyas
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ObjectPotrebleniya>>> GetObjectPotrebleniyas()
+        private async Task<ActionResult<IEnumerable<ObjectPotrebleniya>>> GetObjectPotrebleniyas()
         {
             return await _context.ObjectPotrebleniyas.ToListAsync();
         }
@@ -45,7 +45,7 @@ namespace EnergyApi.Controllers
         // PUT: api/ObjectPotrebleniyas/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutObjectPotrebleniya(int id, ObjectPotrebleniya objectPotrebleniya)
+        private async Task<IActionResult> PutObjectPotrebleniya(int id, ObjectPotrebleniya objectPotrebleniya)
         {
             if (id != objectPotrebleniya.ObjectPotrebleniyaId)
             {
@@ -76,7 +76,7 @@ namespace EnergyApi.Controllers
         // POST: api/ObjectPotrebleniyas
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<ObjectPotrebleniya>> PostObjectPotrebleniya(ObjectPotrebleniya objectPotrebleniya)
+        private async Task<ActionResult<ObjectPotrebleniya>> PostObjectPotrebleniya(ObjectPotrebleniya objectPotrebleniya)
         {
             _context.ObjectPotrebleniyas.Add(objectPotrebleniya);
             await _context.SaveChangesAsync();
@@ -86,7 +86,7 @@ namespace EnergyApi.Controllers
 
         // DELETE: api/ObjectPotrebleniyas/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteObjectPotrebleniya(int id)
+        private async Task<IActionResult> DeleteObjectPotrebleniya(int id)
         {
             var objectPotrebleniya = await _context.ObjectPotrebleniyas.FindAsync(id);
             if (objectPotrebleniya == null)

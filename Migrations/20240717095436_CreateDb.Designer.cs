@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EnergyApi.Migrations
 {
     [DbContext(typeof(TNDbContext))]
-    [Migration("20240717082158_CreateDb")]
+    [Migration("20240717095436_CreateDb")]
     partial class CreateDb
     {
         /// <inheritdoc />
@@ -118,6 +118,12 @@ namespace EnergyApi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RaschetnyPriborUchetaId"));
 
+                    b.Property<DateTime?>("EDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("SDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("TochkaIzmereniyasId")
                         .HasColumnType("int");
 
@@ -132,24 +138,31 @@ namespace EnergyApi.Migrations
                         new
                         {
                             RaschetnyPriborUchetaId = 1,
+                            EDate = new DateTime(2018, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SDate = new DateTime(2018, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TochkaIzmereniyasId = 1,
                             TochkaPostavkisId = 1
                         },
                         new
                         {
                             RaschetnyPriborUchetaId = 2,
+                            EDate = new DateTime(2017, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SDate = new DateTime(2016, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TochkaIzmereniyasId = 2,
                             TochkaPostavkisId = 2
                         },
                         new
                         {
                             RaschetnyPriborUchetaId = 3,
+                            SDate = new DateTime(2018, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TochkaIzmereniyasId = 3,
                             TochkaPostavkisId = 3
                         },
                         new
                         {
                             RaschetnyPriborUchetaId = 4,
+                            EDate = new DateTime(2023, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SDate = new DateTime(2015, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TochkaIzmereniyasId = 4,
                             TochkaPostavkisId = 4
                         });

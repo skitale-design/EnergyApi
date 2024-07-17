@@ -33,6 +33,8 @@ namespace EnergyApi.Migrations
                 {
                     RaschetnyPriborUchetaId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    SDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     TochkaPostavkisId = table.Column<int>(type: "int", nullable: false),
                     TochkaIzmereniyasId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -208,13 +210,13 @@ namespace EnergyApi.Migrations
 
             migrationBuilder.InsertData(
                 table: "RaschetnyPriborUchetas",
-                columns: new[] { "RaschetnyPriborUchetaId", "TochkaIzmereniyasId", "TochkaPostavkisId" },
+                columns: new[] { "RaschetnyPriborUchetaId", "EDate", "SDate", "TochkaIzmereniyasId", "TochkaPostavkisId" },
                 values: new object[,]
                 {
-                    { 1, 1, 1 },
-                    { 2, 2, 2 },
-                    { 3, 3, 3 },
-                    { 4, 4, 4 }
+                    { 1, new DateTime(2018, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2018, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 1 },
+                    { 2, new DateTime(2017, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2016, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 2 },
+                    { 3, null, new DateTime(2018, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, 3 },
+                    { 4, new DateTime(2023, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2015, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 4, 4 }
                 });
 
             migrationBuilder.InsertData(

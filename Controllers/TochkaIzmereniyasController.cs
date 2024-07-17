@@ -30,7 +30,7 @@ namespace EnergyApi.Controllers
 
         // GET: api/TochkaIzmereniyas/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<TochkaIzmereniya>> GetTochkaIzmereniya(int id)
+        private async Task<ActionResult<TochkaIzmereniya>> GetTochkaIzmereniya(int id)
         {
             var tochkaIzmereniya = await _context.TochkaIzmereniyas.FindAsync(id);
 
@@ -45,7 +45,7 @@ namespace EnergyApi.Controllers
         // PUT: api/TochkaIzmereniyas/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTochkaIzmereniya(int id, TochkaIzmereniya tochkaIzmereniya)
+        private async Task<IActionResult> PutTochkaIzmereniya(int id, TochkaIzmereniya tochkaIzmereniya)
         {
             if (id != tochkaIzmereniya.TochkaIzmereniyaId)
             {
@@ -100,7 +100,7 @@ namespace EnergyApi.Controllers
 
         // DELETE: api/TochkaIzmereniyas/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTochkaIzmereniya(int id)
+        private async Task<IActionResult> DeleteTochkaIzmereniya(int id)
         {
             var tochkaIzmereniya = await _context.TochkaIzmereniyas.FindAsync(id);
             if (tochkaIzmereniya == null)

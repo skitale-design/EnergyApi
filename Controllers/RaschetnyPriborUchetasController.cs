@@ -23,16 +23,29 @@ namespace EnergyApi.Controllers
 
         // GET: api/RaschetnyPriborUchetas
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<RaschetnyPriborUcheta>>> GetRaschetnyPriborUchetas()
+        private async Task<ActionResult<IEnumerable<RaschetnyPriborUcheta>>> GetRaschetnyPriborUchetas()
         {
             return await _context.RaschetnyPriborUchetas.ToListAsync();
         }
 
         // GET: api/RaschetnyPriborUchetas/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<RaschetnyPriborUcheta>> GetRaschetnyPriborUcheta(int id)
+        private async Task<ActionResult<RaschetnyPriborUcheta>> GetRaschetnyPriborUcheta(int id)
         {
             var raschetnyPriborUcheta = await _context.RaschetnyPriborUchetas.FindAsync(id);
+
+            if (raschetnyPriborUcheta == null)
+            {
+                return NotFound();
+            }
+
+            return raschetnyPriborUcheta;
+        }
+
+        [HttpGet("{id}")]
+        private async Task<ActionResult<List<RaschetnyPriborUcheta>>> GetRaschetnyPriborUchetaByYear(int year)
+        {
+            var raschetnyPriborUcheta = await _context.RaschetnyPriborUchetas.Where(x => x.SDate.Year <= year).ToListAsync();
 
             if (raschetnyPriborUcheta == null)
             {
@@ -45,7 +58,7 @@ namespace EnergyApi.Controllers
         // PUT: api/RaschetnyPriborUchetas/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutRaschetnyPriborUcheta(int id, RaschetnyPriborUcheta raschetnyPriborUcheta)
+        private async Task<IActionResult> PutRaschetnyPriborUcheta(int id, RaschetnyPriborUcheta raschetnyPriborUcheta)
         {
             if (id != raschetnyPriborUcheta.RaschetnyPriborUchetaId)
             {
@@ -76,7 +89,7 @@ namespace EnergyApi.Controllers
         // POST: api/RaschetnyPriborUchetas
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<RaschetnyPriborUcheta>> PostRaschetnyPriborUcheta(RaschetnyPriborUcheta raschetnyPriborUcheta)
+        private async Task<ActionResult<RaschetnyPriborUcheta>> PostRaschetnyPriborUcheta(RaschetnyPriborUcheta raschetnyPriborUcheta)
         {
             _context.RaschetnyPriborUchetas.Add(raschetnyPriborUcheta);
             await _context.SaveChangesAsync();
@@ -86,7 +99,7 @@ namespace EnergyApi.Controllers
 
         // DELETE: api/RaschetnyPriborUchetas/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRaschetnyPriborUcheta(int id)
+        private async Task<IActionResult> DeleteRaschetnyPriborUcheta(int id)
         {
             var raschetnyPriborUcheta = await _context.RaschetnyPriborUchetas.FindAsync(id);
             if (raschetnyPriborUcheta == null)
