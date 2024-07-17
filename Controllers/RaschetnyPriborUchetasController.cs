@@ -11,7 +11,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EnergyApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Tags("Расчетный Прибор Учета")]
+    [Route("api/[controller]")] 
     [ApiController]
     public class RaschetnyPriborUchetasController : ControllerBase
     {

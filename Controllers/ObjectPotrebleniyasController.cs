@@ -10,6 +10,7 @@ using EnergyApi.Data.Model;
 
 namespace EnergyApi.Controllers
 {
+    [Tags("Объект Потребления")]
     [Route("api/[controller]")]
     [ApiController]
     public class ObjectPotrebleniyasController : ControllerBase

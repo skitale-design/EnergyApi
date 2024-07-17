@@ -10,6 +10,7 @@ using EnergyApi.Data.Model;
 
 namespace EnergyApi.Controllers
 {
+    [Tags("Точка Измерения")]
     [Route("api/[controller]")]
     [ApiController]
     public class TochkaIzmereniyasController : ControllerBase
@@ -29,7 +30,7 @@ namespace EnergyApi.Controllers
         }
 
         // GET: api/TochkaIzmereniyas/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "Получить все")]
         private async Task<ActionResult<TochkaIzmereniya>> GetTochkaIzmereniya(int id)
         {
             var tochkaIzmereniya = await _context.TochkaIzmereniyas.FindAsync(id);
