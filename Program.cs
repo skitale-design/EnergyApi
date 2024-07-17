@@ -1,4 +1,7 @@
 
+using EnergyApi.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace EnergyApi
 {
     public class Program
@@ -7,16 +10,18 @@ namespace EnergyApi
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            builder.Services.AddDbContext<TNDbContext>(x =>
+                x.UseSqlServer(builder.Configuration["ConnectionStrings:TNDB"])
+                .EnableSensitiveDataLogging() // для отладки
+                .LogTo(Console.WriteLine, LogLevel.Information) // для отладки
+            );
 
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -26,7 +31,6 @@ namespace EnergyApi
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 
