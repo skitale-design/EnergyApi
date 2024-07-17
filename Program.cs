@@ -20,6 +20,10 @@ namespace EnergyApi
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.WebHost.UseKestrel((x) =>
+                x.ListenAnyIP(8050)
+            );
+
             var app = builder.Build();
 
             if (app.Environment.IsDevelopment())
