@@ -42,10 +42,10 @@ namespace EnergyApi.Controllers
             return raschetnyPriborUcheta;
         }
 
-        [HttpGet("{id}")]
-        private async Task<ActionResult<List<RaschetnyPriborUcheta>>> GetRaschetnyPriborUchetaByYear(int year)
+        [HttpGet("{year}")]
+        public async Task<ActionResult<List<RaschetnyPriborUcheta>>> GetRaschetnyPriborUchetaByYear(int year)
         {
-            var raschetnyPriborUcheta = await _context.RaschetnyPriborUchetas.Where(x => x.SDate.Year <= year).ToListAsync();
+            var raschetnyPriborUcheta = await _context.RaschetnyPriborUchetas.Where(x => x.SDate.Year <= year && x.EDate.Year >= year).ToListAsync();
 
             if (raschetnyPriborUcheta == null)
             {
