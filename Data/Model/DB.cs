@@ -53,6 +53,8 @@ namespace EnergyApi.Data.Model
     public class RaschetnyPriborUcheta
     {
         public int RaschetnyPriborUchetaId { get; set; }
+        public DateTime SDate { get; set; }
+        public DateTime? EDate { get; set; } // если значение NULL, значит "по настоящее время"
 
         public int TochkaPostavkisId { get; set; }
         [ForeignKey("TochkaPostavkiId")]

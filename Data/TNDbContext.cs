@@ -52,10 +52,10 @@ namespace EnergyApi.Data
             ObjectPotrebleniya op3 = new ObjectPotrebleniya() { SubOrganizationId = 2, ObjectPotrebleniyaId = 3, Name = "Объект потребления 3", Address = "ул. Динамо, дом 3" };
             ObjectPotrebleniya op4 = new ObjectPotrebleniya() { SubOrganizationId = 2, ObjectPotrebleniyaId = 4, Name = "Объект потребления 4", Address = "ул. Динамо, дом 4" };
 
-            RaschetnyPriborUcheta rpu1 = new RaschetnyPriborUcheta() { RaschetnyPriborUchetaId = 1, TochkaIzmereniyasId = 1, TochkaPostavkisId = 1 };
-            RaschetnyPriborUcheta rpu2 = new RaschetnyPriborUcheta() { RaschetnyPriborUchetaId = 2, TochkaIzmereniyasId = 2, TochkaPostavkisId = 2 };
-            RaschetnyPriborUcheta rpu3 = new RaschetnyPriborUcheta() { RaschetnyPriborUchetaId = 3, TochkaIzmereniyasId = 3, TochkaPostavkisId = 3 };
-            RaschetnyPriborUcheta rpu4 = new RaschetnyPriborUcheta() { RaschetnyPriborUchetaId = 4, TochkaIzmereniyasId = 4, TochkaPostavkisId = 4 };
+            RaschetnyPriborUcheta rpu1 = new RaschetnyPriborUcheta() { SDate = DateTime.Parse("01/05/2018"), EDate = DateTime.Parse("01/10/2018"), RaschetnyPriborUchetaId = 1, TochkaIzmereniyasId = 1, TochkaPostavkisId = 1 };
+            RaschetnyPriborUcheta rpu2 = new RaschetnyPriborUcheta() { SDate = DateTime.Parse("01/05/2016"), EDate = DateTime.Parse("01/05/2017"), RaschetnyPriborUchetaId = 2, TochkaIzmereniyasId = 2, TochkaPostavkisId = 2 };
+            RaschetnyPriborUcheta rpu3 = new RaschetnyPriborUcheta() { SDate = DateTime.Parse("01/05/2018"), EDate = DateTime.Parse(""), RaschetnyPriborUchetaId = 3, TochkaIzmereniyasId = 3, TochkaPostavkisId = 3 };
+            RaschetnyPriborUcheta rpu4 = new RaschetnyPriborUcheta() { SDate = DateTime.Parse("01/07/2015"), EDate = DateTime.Parse("01/05/2023"), RaschetnyPriborUchetaId = 4, TochkaIzmereniyasId = 4, TochkaPostavkisId = 4 };
 
 
             SubOrganization so2 = new SubOrganization()
